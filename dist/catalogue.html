@@ -1,0 +1,58 @@
+<script type="text/x-red" data-template-name="catalogue catalogue">
+    <div class="form-row">
+    <label><i class="fa fa-tag"></i> Registry</label>
+        <input type="hidden" id="node-input-registrytype">
+        <input style="width:70%" type="text" id="node-input-registry" placeholder="Registry endpoint">
+    </div>
+    <div class="form-row">
+    <label><i class="fa fa-tag"></i> Update</label>
+        <input type="hidden" id="node-input-updatetype">
+        <input style="width:70%" type="text" id="node-input-update" placeholder="Force update">
+    </div>
+    <div class="form-row">
+        <label ><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Node name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="catalogue catalogue">
+    <p>Expose catalogue</p>
+    Set msg.force to true to force an update
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('catalogue catalogue', {
+        category: 'catalogue',
+        color: "#eeeeee",
+        icon: "hash.svg",
+        defaults: {
+            registry: { value: "http://verdaccio:4873" },
+            registrytype: { value: "str" },
+            update: { value: "false" },
+            updatetype: { value: "bool" },
+            name: { value: "" },
+        },
+        inputs: 1,
+        outputs: 1,
+        paletteLabel: "catalogue",
+        label: function () {
+            return this.name || "catalogue";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+            if (this.registrytype === null) $("#node-input-registrytype").val('str');
+            $("#node-input-registry").typedInput({
+            default: 'str',
+            typeField: $("#node-input-registrytype"),
+            types: ['msg', 'str', 'flow', 'global']
+            });
+            if (this.updatetype === null) $("#node-input-updatetype").val('bool');
+            $("#node-input-update").typedInput({
+            default: 'bool',
+            typeField: $("#node-input-updatetype"),
+            types: ['msg', 'bool', 'flow', 'global']
+            });
+
+        }
+    });
+</script>

@@ -1,0 +1,93 @@
+[
+    {
+        "id": "9f49f1a77e715158",
+        "type": "http in",
+        "z": "5d95da477d125e5f",
+        "name": "",
+        "url": "/catalogue.json",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "5eb93bbf5ea63926"
+            ]
+        ]
+    },
+    {
+        "id": "d807c5adcad12205",
+        "type": "http response",
+        "z": "5d95da477d125e5f",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "bb5d576614b243b6",
+        "type": "inject",
+        "z": "5d95da477d125e5f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 60,
+        "wires": [
+            [
+                "5eb93bbf5ea63926"
+            ]
+        ]
+    },
+    {
+        "id": "86a7d788a3c40c24",
+        "type": "debug",
+        "z": "5d95da477d125e5f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "5eb93bbf5ea63926",
+        "type": "catalogue catalogue",
+        "z": "5d95da477d125e5f",
+        "registry": "http://localhost:4873",
+        "registrytype": "str",
+        "update": "false",
+        "updatetype": "bool",
+        "name": "",
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "d807c5adcad12205",
+                "86a7d788a3c40c24"
+            ]
+        ]
+    }
+]
