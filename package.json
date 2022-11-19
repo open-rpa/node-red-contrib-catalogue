@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-catalogue",
   "version": "0.0.2",
-  "description": "\"# node-red-contrib-catalogue\" \n\n Generated a nodered catalog json from a verdaccio NPM registry. \n\n Heavily inspired by node-red-private-catalogue-builder from hardillb",
+  "description": "\"# node-red-contrib-catalogue\"",
   "main": "dist/catalogue.js",
   "devDependencies": {
     "@types/node": "^18.11.9"
